@@ -6,14 +6,15 @@ import DragHandleIcon from "@mui/icons-material/DragHandle";
 import CloseIcon from "@mui/icons-material/Close";
 import NavbarModal from "./NavbarModal";
 import { usePathname } from "next/navigation";
+import Hamburger from "./Hamburger";
 
 const Navbar = () => {
   const currentRoute = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 bg-zinc-950/30 backdrop-blur-sm">
-      <div className="text-zinc-400 p-4 flex justify-between font-sans font-extralight text-[14px] items-center">
+    <header className="sticky top-0 bg-zinc-950/30 backdrop-blur-sm">
+      <div className="text-zinc-400 md:max-lg:px-4 py-4 px-10 flex justify-between font-sans font-extralight text-[14px] items-center">
         <Link
           href="/"
           className="text-[18px] gap-2 flex items-center text-lime-400"
@@ -22,7 +23,7 @@ const Navbar = () => {
           <p className="font-mono font-normal">Dawid Zurawski</p>
         </Link>
 
-        <div className="hidden sm:flex gap-5">
+        <nav className="hidden sm:flex gap-5">
           <Link
             href="/about"
             className={`${
@@ -53,19 +54,20 @@ const Navbar = () => {
           >
             Projects
           </Link>
-        </div>
+        </nav>
 
-        <div className="block sm:hidden justify-end">
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <CloseIcon /> : <DragHandleIcon />}
-          </button>
+        <div
+          className="block sm:hidden justify-end"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <Hamburger />
         </div>
       </div>
 
       <hr className="border-zinc-700 border-1." />
 
       {isOpen && <NavbarModal onClose={() => setIsOpen(false)} />}
-    </nav>
+    </header>
   );
 };
 
