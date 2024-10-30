@@ -2,8 +2,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import TerminalIcon from "@mui/icons-material/Terminal";
-import DragHandleIcon from "@mui/icons-material/DragHandle";
-import CloseIcon from "@mui/icons-material/Close";
 import NavbarModal from "./NavbarModal";
 import { usePathname } from "next/navigation";
 import Hamburger from "./Hamburger";
@@ -14,13 +12,16 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 bg-zinc-950/30 backdrop-blur-sm">
-      <div className="text-zinc-400 md:max-lg:px-4 py-4 px-10 flex justify-between font-sans font-extralight text-[14px] items-center">
+      <div className="text-zinc-400 md:max-lg:px-10 py-4 px-4 flex justify-between font-sans font-extralight text-[14px] items-center">
         <Link
           href="/"
           className="text-[18px] gap-2 flex items-center text-lime-400"
         >
           <TerminalIcon className="text-zinc-300" />
-          <p className="font-mono font-normal">Dawid Zurawski</p>
+          <p className="font-mono font-normal block sm:hidden text-[14px]">
+            Dawid Zurawski
+          </p>
+          <p className="font-mono font-normal hidden sm:flex">Dawid Zurawski</p>
         </Link>
 
         <nav className="hidden sm:flex gap-5">
